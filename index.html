@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawMart - Premium Pet Products Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <div id="app">
+        <!-- Header -->
+        <header class="bg-white shadow-md sticky top-0 z-50">
+            <div class="container mx-auto px-4">
+                <!-- Top Bar -->
+                <div class="hidden md:flex justify-between items-center py-2 text-sm text-gray-600 border-b">
+                    <div class="flex items-center space-x-4">
+                        <span><i class="fas fa-shipping-fast text-primary-500"></i> Free shipping on orders over $50</span>
+                        <span><i class="fas fa-phone text-primary-500"></i> Call us: 1-800-PET-LOVE</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <a href="#" class="hover:text-primary-500 transition-colors">Track Order</a>
+                        <a href="#" class="hover:text-primary-500 transition-colors">Help</a>
+                    </div>
+                </div>
+                
+                <!-- Main Header -->
+                <div class="flex items-center justify-between py-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="bg-gradient-to-br from-primary-500 to-accent-500 p-2 rounded-xl">
+                            <i class="fas fa-paw text-white text-xl"></i>
+                        </div>
+                        <h1 class="text-2xl font-bold text-gray-800">PawMart</h1>
+                    </div>
+                    
+                    <!-- Search Bar -->
+                    <div class="hidden md:flex flex-1 max-w-xl mx-8">
+                        <div class="relative w-full">
+                            <input type="text" placeholder="Search for pet products..." 
+                                   class="w-full py-3 px-4 pr-12 rounded-full border-2 border-gray-200 focus:border-primary-500 focus:outline-none transition-colors">
+                            <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary-500 text-white p-2 rounded-full hover:bg-primary-600 transition-colors">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Icons -->
+                    <div class="flex items-center space-x-4">
+                        <button class="relative p-2 text-gray-600 hover:text-primary-500 transition-colors">
+                            <i class="fas fa-heart text-xl"></i>
+                            <span class="absolute -top-1 -right-1 bg-secondary-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                        </button>
+                        <button class="relative p-2 text-gray-600 hover:text-primary-500 transition-colors">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <span class="absolute -top-1 -right-1 bg-secondary-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">2</span>
+                        </button>
+                        <button class="p-2 text-gray-600 hover:text-primary-500 transition-colors">
+                            <i class="fas fa-user text-xl"></i>
+                        </button>
+                        <button class="md:hidden p-2 text-gray-600 hover:text-primary-500 transition-colors" id="mobile-menu-btn">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:block py-2 border-t">
+                    <ul class="flex items-center space-x-8">
+                        <li><a href="#" class="text-gray-700 hover:text-primary-500 font-medium py-2 border-b-2 border-transparent hover:border-primary-500 transition-all">Dogs</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-primary-500 font-medium py-2 border-b-2 border-transparent hover:border-primary-500 transition-all">Cats</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-primary-500 font-medium py-2 border-b-2 border-transparent hover:border-primary-500 transition-all">Birds</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-primary-500 font-medium py-2 border-b-2 border-transparent hover:border-primary-500 transition-all">Fish</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-primary-500 font-medium py-2 border-b-2 border-transparent hover:border-primary-500 transition-all">Small Pets</a></li>
+                        <li><a href="#" class="text-secondary-500 hover:text-secondary-600 font-medium py-2 transition-colors">🔥 Sale</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+            <div class="bg-white w-4/5 max-w-sm h-full overflow-y-auto">
+                <div class="p-4 border-b">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-lg font-semibold">Menu</h2>
+                        <button id="close-mobile-menu" class="p-2 text-gray-500">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <nav class="p-4">
+                    <ul class="space-y-4">
+                        <li><a href="#" class="block py-2 text-gray-700 hover:text-primary-500">Dogs</a></li>
+                        <li><a href="#" class="block py-2 text-gray-700 hover:text-primary-500">Cats</a></li>
+                        <li><a href="#" class="block py-2 text-gray-700 hover:text-primary-500">Birds</a></li>
+                        <li><a href="#" class="block py-2 text-gray-700 hover:text-primary-500">Fish</a></li>
+                        <li><a href="#" class="block py-2 text-gray-700 hover:text-primary-500">Small Pets</a></li>
+                        <li><a href="#" class="block py-2 text-secondary-500">🔥 Sale</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Hero Section -->
+            <section class="relative bg-gradient-to-br from-primary-50 via-white to-accent-50 paw-pattern">
+                <div class="container mx-auto px-4 py-16 lg:py-24">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="space-y-6">
+                            <div class="inline-flex items-center bg-white px-4 py-2 rounded-full shadow-md">
+                                <span class="bg-accent-100 text-accent-600 px-3 py-1 rounded-full text-sm font-medium mr-2">New</span>
+                                <span class="text-gray-600">Premium organic pet food collection</span>
+                            </div>
+                            <h1 class="text-4xl lg:text-6xl font-bold text-gray-800 leading-tight">
+                                Everything Your 
+                                <span class="text-primary-500">Furry Friend</span> 
+                                Needs
+                            </h1>
+                            <p class="text-xl text-gray-600">Discover premium pet products, nutritious food, fun toys, and health essentials. Because your pet deserves the very best!</p>
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <button class="btn-primary">
+                                    <i class="fas fa-shopping-bag mr-2"></i>
+                                    Shop Now
+                                </button>
+                                <button class="bg-white text-gray-700 font-medium py-3 px-6 rounded-full border-2 border-gray-200 hover:border-primary-500 hover:text-primary-500 transition-all duration-200">
+                                    <i class="fas fa-play mr-2"></i>
+                                    Watch Our Story
+                                </button>
+                            </div>
+                            <div class="flex items-center space-x-8 pt-4">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-gray-800">50K+</div>
+                                    <div class="text-sm text-gray-600">Happy Pets</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-gray-800">15K+</div>
+                                    <div class="text-sm text-gray-600">Products</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-gray-800">4.9★</div>
+                                    <div class="text-sm text-gray-600">Rating</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="relative z-10">
+                                <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Happy pets" class="rounded-3xl shadow-2xl">
+                                <div class="absolute -bottom-4 -left-4 bg-white p-4 rounded-2xl shadow-lg">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="bg-accent-100 p-2 rounded-full">
+                                            <i class="fas fa-paw text-accent-500"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-gray-800">Free Delivery</div>
+                                            <div class="text-sm text-gray-600">On orders over $50</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute top-4 right-4 bg-secondary-500 text-white px-4 py-2 rounded-full font-semibold animate-bounce-gentle">
+                                30% OFF
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Categories -->
+            <section class="py-16 bg-white">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Shop by Pet</h2>
+                        <p class="text-xl text-gray-600">Find everything your furry, feathered, or finned friends need</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="card group hover:scale-105 transition-transform duration-300 cursor-pointer">
+                            <div class="p-6 text-center">
+                                <div class="bg-gradient-to-br from-orange-100 to-orange-200 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-dog text-3xl text-orange-600"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-gray-800 mb-2">Dogs</h3>
+                                <p class="text-gray-600 text-sm">Food, toys, accessories</p>
+                                <div class="mt-4 text-primary-500 font-medium">Shop Now →</div>
+                            </div>
+                        </div>
+                        
+                        <div class="card group hover:scale-105 transition-transform duration-300 cursor-pointer">
+                            <div class="p-6 text-center">
+                                <div class="bg-gradient-to-br from-purple-100 to-purple-200 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-cat text-3xl text-purple-600"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-gray-800 mb-2">Cats</h3>
+                                <p class="text-gray-600 text-sm">Litter, scratchers, treats</p>
+                                <div class="mt-4 text-primary-500 font-medium">Shop Now →</div>
+                            </div>
+                        </div>
+                        
+                        <div class="card group hover:scale-105 transition-transform duration-300 cursor-pointer">
+                            <div class="p-6 text-center">
+                                <div class="bg-gradient-to-br from-blue-100 to-blue-200 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-fish text-3xl text-blue-600"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-gray-800 mb-2">Fish</h3>
+                                <p class="text-gray-600 text-sm">Aquariums, food, filters</p>
+                                <div class="mt-4 text-primary-500 font-medium">Shop Now →</div>
+                            </div>
+                        </div>
+                        
+                        <div class="card group hover:scale-105 transition-transform duration-300 cursor-pointer">
+                            <div class="p-6 text-center">
+                                <div class="bg-gradient-to-br from-green-100 to-green-200 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-dove text-3xl text-green-600"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-gray-800 mb-2">Birds</h3>
+                                <p class="text-gray-600 text-sm">Cages, seeds, toys</p>
+                                <div class="mt-4 text-primary-500 font-medium">Shop Now →</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Products -->
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-4">
+                    <div class="flex items-center justify-between mb-12">
+                        <div>
+                            <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Best Sellers</h2>
+                            <p class="text-xl text-gray-600">Products loved by pet parents everywhere</p>
+                        </div>
+                        <button class="hidden lg:block btn-primary">View All</button>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Product 1 -->
+                        <div class="card group cursor-pointer overflow-hidden">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                     alt="Premium Dog Food" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                                <div class="absolute top-3 left-3 bg-accent-500 text-white px-2 py-1 rounded-full text-sm font-medium">
+                                    Best Seller
+                                </div>
+                                <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="bg-white p-2 rounded-full shadow-lg hover:bg-red-50 transition-colors">
+                                        <i class="fas fa-heart text-gray-400 hover:text-red-500"></i>
+                                    </button>
+                                </div>
+                                <div class="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="btn-primary !py-2 !px-4 !text-sm">
+                                        Quick Add
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-semibold text-gray-800 mb-2">Premium Organic Dog Food</h3>
+                                <div class="flex items-center mb-2">
+                                    <div class="flex text-yellow-400 text-sm">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-gray-500 text-sm ml-2">(124 reviews)</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-xl font-bold text-gray-800">$29.99</span>
+                                        <span class="text-sm text-gray-400 line-through">$39.99</span>
+                                    </div>
+                                    <span class="text-green-600 text-sm font-medium">25% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 2 -->
+                        <div class="card group cursor-pointer overflow-hidden">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1588943211346-0908a1fb0b01?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                     alt="Cat Scratching Post" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                                <div class="absolute top-3 left-3 bg-primary-500 text-white px-2 py-1 rounded-full text-sm font-medium">
+                                    New
+                                </div>
+                                <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="bg-white p-2 rounded-full shadow-lg hover:bg-red-50 transition-colors">
+                                        <i class="fas fa-heart text-gray-400 hover:text-red-500"></i>
+                                    </button>
+                                </div>
+                                <div class="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="btn-primary !py-2 !px-4 !text-sm">
+                                        Quick Add
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-semibold text-gray-800 mb-2">Luxury Cat Scratching Tower</h3>
+                                <div class="flex items-center mb-2">
+                                    <div class="flex text-yellow-400 text-sm">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <span class="text-gray-500 text-sm ml-2">(89 reviews)</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xl font-bold text-gray-800">$79.99</span>
+                                    <span class="text-green-600 text-sm font-medium">Free Shipping</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div class="card group cursor-pointer overflow-hidden">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1606889464198-fcb18894cf50?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                     alt="Interactive Dog Toy" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                                <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="bg-white p-2 rounded-full shadow-lg hover:bg-red-50 transition-colors">
+                                        <i class="fas fa-heart text-gray-400 hover:text-red-500"></i>
+                                    </button>
+                                </div>
+                                <div class="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="btn-primary !py-2 !px-4 !text-sm">
+                                        Quick Add
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-semibold text-gray-800 mb-2">Interactive Puzzle Toy</h3>
+                                <div class="flex items-center mb-2">
+                                    <div class="flex text-yellow-400 text-sm">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-gray-500 text-sm ml-2">(156 reviews)</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xl font-bold text-gray-800">$19.99</span>
+                                    <span class="text-green-600 text-sm font-medium">In Stock</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 4 -->
+                        <div class="card group cursor-pointer overflow-hidden">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1574168924487-b1fce46c8d3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                     alt="Pet Carrier" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                                <div class="absolute top-3 left-3 bg-secondary-500 text-white px-2 py-1 rounded-full text-sm font-medium">
+                                    Sale
+                                </div>
+                                <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="bg-white p-2 rounded-full shadow-lg hover:bg-red-50 transition-colors">
+                                        <i class="fas fa-heart text-gray-400 hover:text-red-500"></i>
+                                    </button>
+                                </div>
+                                <div class="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="btn-primary !py-2 !px-4 !text-sm">
+                                        Quick Add
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-semibold text-gray-800 mb-2">Travel Pet Carrier</h3>
+                                <div class="flex items-center mb-2">
+                                    <div class="flex text-yellow-400 text-sm">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <span class="text-gray-500 text-sm ml-2">(67 reviews)</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-xl font-bold text-gray-800">$59.99</span>
+                                        <span class="text-sm text-gray-400 line-through">$89.99</span>
+                                    </div>
+                                    <span class="text-green-600 text-sm font-medium">33% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-8 lg:hidden">
+                        <button class="btn-primary">View All Products</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="py-16 bg-white">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Happy Pet Parent Stories</h2>
+                        <p class="text-xl text-gray-600">See what our customers and their furry friends have to say</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Testimonial 1 -->
+                        <div class="card p-6">
+                            <div class="flex items-center mb-4">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                     alt="Customer" class="w-12 h-12 rounded-full object-cover mr-4">
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Sarah Johnson</h4>
+                                    <div class="flex text-yellow-400 text-sm">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">"The organic dog food has made such a difference in Max's energy levels. He's healthier and happier than ever! Plus, the delivery is always on time."</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-paw text-primary-500 mr-2"></i>
+                                <span>Golden Retriever parent</span>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 2 -->
+                        <div class="card p-6">
+                            <div class="flex items-center mb-4">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                     alt="Customer" class="w-12 h-12 rounded-full object-cover mr-4">
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Mike Chen</h4>
+                                    <div class="flex text-yellow-400 text-sm">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">"Best pet store online! The cat tower we bought is absolutely perfect and Whiskers loves it. Great quality and fast shipping too."</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-paw text-primary-500 mr-2"></i>
+                                <span>Cat parent</span>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 3 -->
+                        <div class="card p-6">
+                            <div class="flex items-center mb-4">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                     alt="Customer" class="w-12 h-12 rounded-full object-cover mr-4">
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Emily Rodriguez</h4>
+                                    <div class="flex text-yellow-400 text-sm">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">"Amazing customer service! When I had questions about bird food, they were so helpful. My parakeets love the seeds and treats."</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-paw text-primary-500 mr-2"></i>
+                                <span>Bird parent</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trust Indicators -->
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-4">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="text-center">
+                            <div class="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-shipping-fast text-2xl text-primary-500"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Free Shipping</h3>
+                            <p class="text-gray-600">On orders over $50. Fast and reliable delivery to your door.</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="bg-accent-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-shield-alt text-2xl text-accent-500"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Secure Payment</h3>
+                            <p class="text-gray-600">Your payment information is always protected and secure.</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="bg-secondary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-undo text-2xl text-secondary-500"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Easy Returns</h3>
+                            <p class="text-gray-600">30-day money-back guarantee. No questions asked.</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-headset text-2xl text-purple-500"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">24/7 Support</h3>
+                            <p class="text-gray-600">Our pet experts are here to help you anytime, anywhere.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white">
+            <div class="container mx-auto px-4 py-12">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Company Info -->
+                    <div>
+                        <div class="flex items-center space-x-2 mb-6">
+                            <div class="bg-gradient-to-br from-primary-500 to-accent-500 p-2 rounded-xl">
+                                <i class="fas fa-paw text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold">PawMart</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4">Your trusted partner in pet care. We provide premium products to keep your furry friends happy and healthy.</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-300 hover:text-primary-400 transition-colors">
+                                <i class="fab fa-facebook text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-300 hover:text-primary-400 transition-colors">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-300 hover:text-primary-400 transition-colors">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-300 hover:text-primary-400 transition-colors">
+                                <i class="fab fa-youtube text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Blog</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Pet Care Tips</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Track Your Order</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Categories -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Shop By Pet</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Dogs</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Cats</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Birds</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Fish</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Small Pets</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Stay Updated</h4>
+                        <p class="text-gray-300 mb-4">Get the latest deals and pet care tips delivered to your inbox.</p>
+                        <div class="flex">
+                            <input type="email" placeholder="Your email" 
+                                   class="flex-1 py-2 px-4 rounded-l-lg text-gray-800 focus:outline-none">
+                            <button class="bg-primary-500 hover:bg-primary-600 px-4 py-2 rounded-r-lg transition-colors">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-300 text-sm">© 2025 PawMart. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                        <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Terms of Service</a>
+                        <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Shipping Info</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Floating Chat Button -->
+        <div class="fixed bottom-6 right-6 z-50">
+            <button class="bg-primary-500 hover:bg-primary-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 animate-pulse-soft">
+                <i class="fas fa-comments text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Product Listing Page (Hidden by default) -->
+        <div id="product-listing-page" class="hidden">
+            <div class="container mx-auto px-4 py-8">
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <!-- Sidebar Filters -->
+                    <div class="lg:w-1/4">
+                        <div class="card p-6 sticky top-24">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Filters</h3>
+                            
+                            <!-- Pet Type Filter -->
+                            <div class="mb-6">
+                                <h4 class="font-medium text-gray-700 mb-3">Pet Type</h4>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="mr-2 text-primary-500">
+                                        <span class="text-gray-600">Dogs (234)</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="mr-2 text-primary-500">
+                                        <span class="text-gray-600">Cats (189)</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="mr-2 text-primary-500">
+                                        <span class="text-gray-600">Birds (67)</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="mr-2 text-primary-500">
+                                        <span class="text-gray-600">Fish (45)</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Price Range -->
+                            <div class="mb-6">
+                                <h4 class="font-medium text-gray-700 mb-3">Price Range</h4>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="price" class="mr-2 text-primary-500">
+                                        <span class="text-gray-600">Under $25</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="price" class="mr-2 text-primary-500">
+                                        <span class="text-gray-600">$25 - $50</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="price" class="mr-2 text-primary-500">
+                                        <span class="text-gray-600">$50 - $100</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="price" class="mr-2 text-primary-500">
+                                        <span class="text-gray-600">Over $100</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Brand Filter -->
+                            <div class="mb-6">
+                                <h4 class="font-medium text-gray-700 mb-3">Brand</h4>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="mr-2 text-primary-500">
+                                        <span class="text-gray-600">PawNutrition</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="mr-2 text-primary-500">
+                                        <span class="text-gray-600">FurryFriends</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="mr-2 text-primary-500">
+                                        <span class="text-gray-600">PetLux</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <button class="w-full bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300 transition-colors">
+                                Clear All Filters
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Grid -->
+                    <div class="lg:w-3/4">
+                        <!-- Sort and View Options -->
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h2 class="text-2xl font-bold text-gray-800">Dog Products</h2>
+                                <p class="text-gray-600">Showing 1-12 of 234 results</p>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <select class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-primary-500">
+                                    <option>Sort by: Featured</option>
+                                    <option>Price: Low to High</option>
+                                    <option>Price: High to Low</option>
+                                    <option>Newest</option>
+                                    <option>Best Sellers</option>
+                                </select>
+                                <div class="flex border border-gray-300 rounded-lg">
+                                    <button class="p-2 bg-primary-500 text-white">
+                                        <i class="fas fa-th"></i>
+                                    </button>
+                                    <button class="p-2 text-gray-600 hover:bg-gray-100">
+                                        <i class="fas fa-list"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Products Grid -->
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Repeat product cards here with different products -->
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="flex justify-center mt-12">
+                            <div class="flex items-center space-x-2">
+                                <button class="p-2 text-gray-600 hover:text-primary-500">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="px-4 py-2 bg-primary-500 text-white rounded-lg">1</button>
+                                <button class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">2</button>
+                                <button class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">3</button>
+                                <span class="px-4 py-2 text-gray-400">...</span>
+                                <button class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">12</button>
+                                <button class="p-2 text-gray-600 hover:text-primary-500">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Detail Page (Hidden by default) -->
+        <div id="product-detail-page" class="hidden">
+            <div class="container mx-auto px-4 py-8">
+                <nav class="text-sm text-gray-600 mb-6">
+                    <a href="#" class="hover:text-primary-500">Home</a>
+                    <span class="mx-2">/</span>
+                    <a href="#" class="hover:text-primary-500">Dogs</a>
+                    <span class="mx-2">/</span>
+                    <span>Premium Organic Dog Food</span>
+                </nav>
+
+                <div class="grid lg:grid-cols-2 gap-12 mb-12">
+                    <!-- Product Images -->
+                    <div>
+                        <div class="mb-4">
+                            <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Product" class="w-full rounded-2xl">
+                        </div>
+                        <div class="grid grid-cols-4 gap-2">
+                            <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                                 alt="Thumbnail" class="w-full aspect-square object-cover rounded-lg border-2 border-primary-500">
+                            <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                                 alt="Thumbnail" class="w-full aspect-square object-cover rounded-lg border border-gray-200 hover:border-primary-500 cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                                 alt="Thumbnail" class="w-full aspect-square object-cover rounded-lg border border-gray-200 hover:border-primary-500 cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                                 alt="Thumbnail" class="w-full aspect-square object-cover rounded-lg border border-gray-200 hover:border-primary-500 cursor-pointer">
+                        </div>
+                    </div>
+
+                    <!-- Product Info -->
+                    <div>
+                        <div class="mb-4">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="bg-accent-100 text-accent-600 px-3 py-1 rounded-full text-sm font-medium">Best Seller</span>
+                                <span class="bg-primary-100 text-primary-600 px-3 py-1 rounded-full text-sm font-medium">Organic</span>
+                            </div>
+                            <h1 class="text-3xl font-bold text-gray-800 mb-2">Premium Organic Dog Food</h1>
+                            <div class="flex items-center mb-4">
+                                <div class="flex text-yellow-400 mr-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="text-gray-600">(124 reviews)</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <div class="flex items-center space-x-4 mb-2">
+                                <span class="text-3xl font-bold text-gray-800">$29.99</span>
+                                <span class="text-xl text-gray-400 line-through">$39.99</span>
+                                <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium">25% OFF</span>
+                            </div>
+                            <p class="text-green-600 font-medium">In stock - Free shipping on orders over $50</p>
+                        </div>
+
+                        <div class="mb-6">
+                            <p class="text-gray-600 leading-relaxed">Made with premium organic ingredients, this nutritious dog food provides complete and balanced nutrition for adult dogs. Rich in protein and essential vitamins to keep your furry friend healthy and active.</p>
+                        </div>
+
+                        <!-- Size Selection -->
+                        <div class="mb-6">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-3">Size</h3>
+                            <div class="flex space-x-3">
+                                <button class="px-4 py-2 border-2 border-primary-500 text-primary-500 rounded-lg font-medium">5 lbs</button>
+                                <button class="px-4 py-2 border border-gray-300 text-gray-600 rounded-lg hover:border-primary-500 hover:text-primary-500">15 lbs</button>
+                                <button class="px-4 py-2 border border-gray-300 text-gray-600 rounded-lg hover:border-primary-500 hover:text-primary-500">30 lbs</button>
+                            </div>
+                        </div>
+
+                        <!-- Quantity and Add to Cart -->
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div class="flex items-center border border-gray-300 rounded-lg">
+                                <button class="p-3 hover:bg-gray-100">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <span class="px-4 py-3 font-medium">1</span>
+                                <button class="p-3 hover:bg-gray-100">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <button class="btn-primary flex-1">
+                                <i class="fas fa-shopping-cart mr-2"></i>
+                                Add to Cart
+                            </button>
+                            <button class="p-3 border border-gray-300 rounded-lg hover:bg-red-50 hover:border-red-300 hover:text-red-500">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+
+                        <!-- Trust Indicators -->
+                        <div class="grid grid-cols-3 gap-4 py-6 border-t border-gray-200">
+                            <div class="text-center">
+                                <i class="fas fa-shipping-fast text-primary-500 text-xl mb-2"></i>
+                                <div class="text-sm text-gray-600">Free Shipping</div>
+                            </div>
+                            <div class="text-center">
+                                <i class="fas fa-undo text-primary-500 text-xl mb-2"></i>
+                                <div class="text-sm text-gray-600">30-Day Returns</div>
+                            </div>
+                            <div class="text-center">
+                                <i class="fas fa-shield-alt text-primary-500 text-xl mb-2"></i>
+                                <div class="text-sm text-gray-600">Secure Payment</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Details Tabs -->
+                <div class="mb-12">
+                    <div class="border-b border-gray-200 mb-6">
+                        <nav class="flex space-x-8">
+                            <button class="py-2 px-1 border-b-2 border-primary-500 text-primary-500 font-medium">Description</button>
+                            <button class="py-2 px-1 border-b-2 border-transparent text-gray-600 hover:text-primary-500">Ingredients</button>
+                            <button class="py-2 px-1 border-b-2 border-transparent text-gray-600 hover:text-primary-500">Reviews (124)</button>
+                            <button class="py-2 px-1 border-b-2 border-transparent text-gray-600 hover:text-primary-500">Shipping</button>
+                        </nav>
+                    </div>
+                    
+                    <div class="prose max-w-none">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Product Description</h3>
+                        <p class="text-gray-600 mb-4">Our Premium Organic Dog Food is crafted with the finest organic ingredients to provide your dog with complete and balanced nutrition. Each batch is carefully prepared to ensure maximum nutritional value and taste that dogs love.</p>
+                        
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Key Features:</h4>
+                        <ul class="text-gray-600 space-y-2 mb-4">
+                            <li>• Made with organic, farm-fresh ingredients</li>
+                            <li>• High protein content for muscle development</li>
+                            <li>• Rich in vitamins and minerals</li>
+                            <li>• No artificial preservatives or fillers</li>
+                            <li>• Suitable for adult dogs of all sizes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Related Products -->
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">You Might Also Like</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Related product cards here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
